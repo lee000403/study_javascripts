@@ -4,10 +4,11 @@ let list_car = [{"YEAR":"2020","CAR_NAME":"소나타","CAR_INFOR_ID":"CI001","CO
 {"YEAR":"2022","CAR_NAME":"3 시리즈","CAR_INFOR_ID":"CI004","COMPANY_ID":"C004"},
 {"YEAR":"2020","CAR_NAME":"캠리","CAR_INFOR_ID":"CI005","COMPANY_ID":"C005"}]
 
-let html_car = ``;
+let html_car = `<table>`;
 for (let car of list_car) {
     html_car = `${html_car}<tr><td>${car.YEAR}</td><td>${car.CAR_NAME}</td><td>${car.CAR_INFOR_ID}</td><td>${car.COMPANY_ID}</td></tr>`;
 }
+html_car += `</table>`
 
 let loops_year = document.querySelector(`#car`);
 loops_year.innerHTML = html_car;

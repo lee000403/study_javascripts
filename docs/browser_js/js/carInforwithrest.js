@@ -23,11 +23,11 @@ function carinforSelect() {
 async function carTableBody() {
   try {
     let car_list = await carinforSelect();
-    let outHtml = ``;
+    let outHtml = `<table>`;
     for (let car_hashmap of car_list) {
       outHtml = `${outHtml}<tr><td>${car_hashmap.YEAR}</td><td>${car_hashmap.CAR_NAME}</td><td>${car_hashmap.CAR_INFOR_ID}</td><td>${car_hashmap.COMPANY_ID}</td></tr>`;
     }
-    outHtml += ``;
+    outHtml += `</table>`;
     let carTableBodyElement = document.querySelector('#carTableBody');
     carTableBodyElement.innerHTML = outHtml;
   } catch (error) {

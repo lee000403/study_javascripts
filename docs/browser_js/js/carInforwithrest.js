@@ -9,28 +9,22 @@ keydownObject.addEventListener('keydown', (event) => { // keydown은 내가 하�
   }
 });
 
-function carinforSelect() {
+function carTableBody() {
   let url = 'http://192.168.0.35:8080/selectAll/CI002';
   return fetch(url)
     .then(response => {
       return response.json();
     })
+    .then(data => {
+      let outHtml = `<table>`;
+      for (let car_hashmap of data) {
+        outHtml = `${outHtml}<tr><td>${car_hashmap.YEAR}</td><td>${car_hashmap.CAR_NAME}</td><td>${car_hashmap.CAR_INFOR_ID}</td><td>${car_hashmap.COMPANY_ID}</td></tr>`;
+      }
+      outHtml += `</table>`;
+      let carTableBodyElement = document.querySelector('#carTableBody');
+      carTableBodyElement.innerHTML = outHtml;
+    })
     .catch(error => {
       console.log(error);
     });
-}
-
-async function carTableBody() {
-  try {
-    let car_list = await carinforSelect();
-    let outHtml = `<table>`;
-    for (let car_hashmap of car_list) {
-      outHtml = `${outHtml}<tr><td>${car_hashmap.YEAR}</td><td>${car_hashmap.CAR_NAME}</td><td>${car_hashmap.CAR_INFOR_ID}</td><td>${car_hashmap.COMPANY_ID}</td></tr>`;
-    }
-    outHtml += `</table>`;
-    let carTableBodyElement = document.querySelector('#carTableBody');
-    carTableBodyElement.innerHTML = outHtml;
-  } catch (error) {
-    console.log(error);
-  }
 }

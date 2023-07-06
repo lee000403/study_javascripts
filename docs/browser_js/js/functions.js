@@ -2,11 +2,11 @@
 function calculateSumFirst(first, second) {
     return first + second
 }
-let third = calculateSumFirst(4,6);
+let third = calculateSumFirst(4, 6);
 
 let calcullateSubSecond = (first, second) => {
     return first - second;
-} ;
+};
 // calcullateSubSecond(2,1)
 // 1
 

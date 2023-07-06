@@ -10,12 +10,15 @@ keydownObject.addEventListener('keydown', (event) => { // keydown은 내가 하�
 });
 
 function carTableBody() {
+  // url 입력
   let url = 'http://192.168.0.35:8080/selectAll/CI002';
+  // fetch 사용
   return fetch(url)
     .then(response => {
       return response.json();
     })
     .then(data => {
+      // data에 hashmap 파일 저장이 되있으므로 data 사용
       let outHtml = `<table>`;
       for (let car_hashmap of data) {
         outHtml = `${outHtml}<tr><td>${car_hashmap.YEAR}</td><td>${car_hashmap.CAR_NAME}</td><td>${car_hashmap.CAR_INFOR_ID}</td><td>${car_hashmap.COMPANY_ID}</td></tr>`;
